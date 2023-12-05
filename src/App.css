@@ -1,38 +1,56 @@
-.App {
-  text-align: center;
+ .App { 
+  font-family: "Pacifico", cursive;
+  text-align: center;  
+  background-image: url("./input/Red-sunrise.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+h2{
+color: black;
+}
+.inputdiv {
+  font-family: "Pacifico", cursive;
+  background-color: rgb(255, 178, 12)
+}
+.mini{
+  background-color: rgb(255, 160, 12);
+  padding: 10px; border-radius: 20px;
+  margin: 30px 10px;
+}
+.mini h1{
+font-size: 45px;
+}
+ .WeatherDetails{
+   display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 10px;
+  background-color: aquamarine;
+  margin:20px;
+  border-radius: 20px;
+ }
+ .Weather{
+  background-color: white; 
+  
+  padding: 4%; border-radius: 20px;
+ }
+ .Temparature{
+  background-color: white;  
+  padding: 40px; border-radius: 20px;
+ }
+
+ .WindNPressure{
+   background-color: white; 
+  padding: 40px; border-radius: 20px;
+ }
+ .Aqi{
+   background-color: white;  
+  padding: 40px; border-radius: 20px;
+ }
+.footer{
+  height:40px;
+  background-color: azure;
+  
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+ 
