@@ -68,6 +68,8 @@ const CityInput = () => {
           "http://api.openweathermap.org/data/2.5/air_pollution";
         let lati = iweather?.coord?.lat;
         let longi = iweather?.coord?.lon;
+        console.log(lati);
+        console.log(longi);
         if (lati !== undefined && longi !== undefined) {
          try {
            await Axios.get(
@@ -104,7 +106,8 @@ const CityInput = () => {
     };
     Unsplash();
     maindata();
-  }, [city, iweather?.coord?.lat, iweather?.coord?.lon, unit]);
+  }, [city,
+    unit]);
 
   function handleSubmit() { 
    
