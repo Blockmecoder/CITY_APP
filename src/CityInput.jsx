@@ -76,7 +76,7 @@ const CityInput = () => {
              setAqi(res.data);
            });
          } catch (error) {
-          console.log("openweather aqi server error : ", error.response);
+          console.log("openweather aqi server error : ", error);
          }
         } 
       } catch (error) {
