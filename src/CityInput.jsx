@@ -69,14 +69,18 @@ const CityInput = () => {
         let lati = iweather?.coord?.lat;
         let longi = iweather?.coord?.lon;
         if (lati !== undefined && longi !== undefined) {
-          await Axios.get(
-            `${API_CALL_AQI}?lat=${lati}&lon=${longi}&appid=${apik}`
-          ).then((res) => { 
-            setAqi(res.data);
-          });
+         try {
+           await Axios.get(
+             `${API_CALL_AQI}?lat=${lati}&lon=${longi}&appid=${apik}`
+           ).then((res) => {
+             setAqi(res.data);
+           });
+         } catch (error) {
+          console.log("openweather aqi server error : ", error.response);
+         }
         } 
       } catch (error) {
-        console.log("openweather server error : ", error.response);
+        console.log("openweather weather data server error : ", error.response);
         setCity("Enter Correct City Name");
       }
     };
@@ -103,6 +107,7 @@ const CityInput = () => {
   }, [city, iweather?.coord?.lat, iweather?.coord?.lon, unit]);
 
   function handleSubmit() { 
+   
     setCity(
       inputValue.trim() === ""
         ? "AYODHYA"
