@@ -57,30 +57,30 @@ const CityInput = () => {
       console.log("first");
 
       try {
-        const apik = process.env.REACT_APP_API_KEY;  
+        const apik = process.env.REACT_APP_API_KEY;
         const API_CALL = `https://api.openweathermap.org/data/2.5/weather`;
-        await Axios.get(
+        const res2 = await Axios.get(
           `${API_CALL}?appid=${apik}&q=${city}&units=${unit}`
-        ).then((res) => {
-          SetWeather(res.data);
-        });
+        );
+
+        SetWeather(res2.data);
+
         const API_CALL_AQI =
-          "http://api.openweathermap.org/data/2.5/air_pollution";
+          "https://api.openweathermap.org/data/2.5/air_pollution";
         let lati = iweather?.coord?.lat;
         let longi = iweather?.coord?.lon;
         console.log(lati);
         console.log(longi);
         if (lati !== undefined && longi !== undefined) {
-         try {
-           await Axios.get(
-             `${API_CALL_AQI}?lat=${lati}&lon=${longi}&appid=${apik}`
-           ).then((res) => {
-             setAqi(res.data);
-           });
-         } catch (error) {
-          console.log("openweather aqi server error : ", error);
-         }
-        } 
+          try {
+            const res = await Axios.get(
+              `${API_CALL_AQI}?lat=${lati}&lon=${longi}&appid=${apik}`
+            );
+            setAqi(res.data);
+          } catch (error) {
+            console.log("openweather aqi server error : ", error);
+          }
+        }
       } catch (error) {
         console.log("openweather weather data server error : ", error.response);
         setCity("Enter Correct City Name");
@@ -94,7 +94,7 @@ const CityInput = () => {
         const U_CALL = "https://api.unsplash.com/search/photos?";
         await Axios.get(`${U_CALL}&query=${city}&client_id=${Cid}`).then(
           (r) => {
-            setImage(r.data.results[0].urls.regular); 
+            setImage(r.data.results[0].urls.regular);
           }
         );
       } catch (error) {
@@ -106,8 +106,11 @@ const CityInput = () => {
     };
     Unsplash();
     maindata();
-  }, [city,
-    unit]);
+  }, [
+    city,
+    iweather?.coord?.lat, iweather?.coord?.lon,
+    unit,
+  ]);
 
   function handleSubmit() { 
    
