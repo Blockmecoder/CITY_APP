@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
+import icon from './input/logo.png'
 import Axios from "axios"; 
-import "./App.css"; 
- 
+import "./App.css";
 
 const getAirQualityDescription = (p) => {
   if (p === 1) {
@@ -19,24 +19,6 @@ const getAirQualityDescription = (p) => {
   }
 };
 
-
-const piku = {
-  margin: "20px 20px 40px 20px",
-  borderRadius: "30px",
-  backgroundColor: "black",
-  color: "white",
-  width: "120px",
-  height: "45px",
-};
-const inpu = {
-  width: "40vh",
-  height: "6vh",
-  fontSize: "26px",
-  borderRadius: "9px",
-  textAlign: "center",
-};
- 
-
 const CityInput = () => {
   const [city, setCity] = useState("AYODHYA");
   const [unit, setUnit] = useState("metric");
@@ -47,7 +29,6 @@ const CityInput = () => {
 
   function handleUnit() {
     setUnit(unit === "metric" ? "imperial" : "metric");
-    
   }
 
   useEffect(() => {
@@ -67,6 +48,7 @@ const CityInput = () => {
 
         const API_CALL_AQI =
           "https://api.openweathermap.org/data/2.5/air_pollution";
+        // always  use https not http as security check might fail
         let lati = iweather?.coord?.lat;
         let longi = iweather?.coord?.lon;
         console.log(lati);
@@ -106,14 +88,9 @@ const CityInput = () => {
     };
     Unsplash();
     maindata();
-  }, [
-    city,
-    iweather?.coord?.lat, iweather?.coord?.lon,
-    unit,
-  ]);
+  }, [city, iweather?.coord?.lat, iweather?.coord?.lon, unit]);
 
-  function handleSubmit() { 
-   
+  function handleSubmit() {
     setCity(
       inputValue.trim() === ""
         ? "AYODHYA"
@@ -126,128 +103,145 @@ const CityInput = () => {
     setInputValue(e.target.value);
   }
 
-  const { weather, main, wind, clouds } = iweather; 
+  const { weather, main, wind, clouds } = iweather;
+
+  //  RETURN FUNCTION
 
   return (
     <div>
-      <h1 style={{ color: 'rgb(255, 125, 12)' }}>CITY DATA</h1>
-      <div
-        style={{
-          paddingTop: "5%",
-        }}
-        className="inputdiv"
-      >
+      <div className="inputdiv">
+        <img src={icon} className="logo slideRight" alt="Check Your Internet" />
         <input
-          onKeyDown={(e) => { 
+          onKeyDown={(e) => {
             if (e.key === "Enter") {
               handleSubmit();
             }
           }}
-          style={inpu}
+          className="input_place slideRight"
           value={inputValue}
           onChange={handleInputChange}
           placeholder="Enter City"
         ></input>
-        <button style={piku} onClick={handleSubmit} type="submit">
+        <button
+          className="search_butt slideRight"
+          onClick={handleSubmit}
+          type="submit"
+        >
           Search
         </button>
       </div>
-      <div className="mini">
-        <h1 className="cityname">{city}</h1>
-        <div className="WeatherDetails">
-          {/* Weather */}
-          <div className="Weather">
-            <h2>Weather feels like : {weather && weather[0]?.main}</h2>
-            <img
-              src={`https://openweathermap.org/img/wn/${
-                weather && weather[0]?.icon
-              }@2x.png`}
-              style={{ backgroundColor: "black" }}
-              alt={`Icon error`}
-            />
-            <h2>Description : {weather && weather[0]?.description}</h2>
-          </div>
-          {/* temparature */}
-          <div className="Temparature">
-            <h2>
-              Temparature : {main?.temp}
-              <span onClick={handleUnit} style={{ fontSize: "20px" }}>
-                {" "}
-                {unit === "metric" ? "°C" : "°F"}
-              </span>
-            </h2>
-            <h2>
-              Minimum Temparature : {main?.temp_min}
-              <span onClick={handleUnit} style={{ fontSize: "20px" }}>
-                {" "}
-                {unit === "metric" ? "°C" : "°F"}
-              </span>
-            </h2>
-            <h2>
-              Maximum Temparature : {main?.temp_max}
-              <span onClick={handleUnit} style={{ fontSize: "20px" }}>
-                {" "}
-                {unit === "metric" ? "°C" : "°F"}
-              </span>
-            </h2>
-            <h2>
-              Height From Sea Level : {main?.sea_level}
-              <span onClick={handleUnit} style={{ fontSize: "20px" }}>
-                {" "}
-                {"Meters"}
-              </span>
-            </h2>
-          </div>
-          {/* wind n pressure */}
-          <div className="WindNPressure">
-            <h2>
-              Wind Speed : {wind?.speed}
-              <span onClick={handleUnit} style={{ fontSize: "20px" }}>
-                {" "}
-                {unit === "metric" ? "m/s" : "mph"}
-              </span>
-            </h2>
-            <h2>
-              Humidity Percentage : {main?.humidity}
-              <span style={{ fontSize: "20px" }}>%</span>
-            </h2>
+      <section className="part2 slide-in-section">
+        <div className="mini">
+          <h1 className="cityname">{city}</h1>
+          <div className="WeatherDetails">
+            {/* Weather */}
+            <div className="Weather one">
+              <main>
+                <h2>Weather feels like : {weather && weather[0]?.main}</h2>
+                <img
+                  src={`https://openweathermap.org/img/wn/${
+                    weather && weather[0]?.icon
+                  }@2x.png`}
+                  style={{
+                    backgroundColor: "black",
+                    borderRadius: "50%",
+                    minWidth: "100px",
+                    minHeight: "100px",
+                  }}
+                  alt={`Icon error`}
+                />
+                <h2>Description : {weather && weather[0]?.description}</h2>
+              </main>
+            </div>
+            {/* temparature */}
+            <div className="Temparature one">
+              <main>
+                <h2>
+                  Temparature : {main?.temp}
+                  <span onClick={handleUnit} style={{ fontSize: "20px" }}>
+                    {" "}
+                    {unit === "metric" ? "°C" : "°F"}
+                  </span>
+                </h2>
+                <h2>
+                  Minimum Temparature : {main?.temp_min}
+                  <span onClick={handleUnit} style={{ fontSize: "20px" }}>
+                    {" "}
+                    {unit === "metric" ? "°C" : "°F"}
+                  </span>
+                </h2>
+                <h2>
+                  Maximum Temparature : {main?.temp_max}
+                  <span onClick={handleUnit} style={{ fontSize: "20px" }}>
+                    {" "}
+                    {unit === "metric" ? "°C" : "°F"}
+                  </span>
+                </h2>
+                <h2>
+                  Height From Sea Level : {main?.sea_level}
+                  <span onClick={handleUnit} style={{ fontSize: "20px" }}>
+                    {" "}
+                    {"Meters"}
+                  </span>
+                </h2>
+              </main>
+            </div>
+            {/* wind n pressure */}
+            <div className="WindNPressure one">
+              <main>
+                <h2>
+                  Wind Speed : {wind?.speed}
+                  <span onClick={handleUnit} style={{ fontSize: "20px" }}>
+                    {" "}
+                    {unit === "metric" ? "m/s" : "mph"}
+                  </span>
+                </h2>
+                <h2>
+                  Humidity Percentage : {main?.humidity}
+                  <span style={{ fontSize: "20px" }}>%</span>
+                </h2>
 
-            <h2>
-              Pressure : {main?.pressure}
-              <span style={{ fontSize: "20px" }}> {"hPa"}</span>
-            </h2>
-            <h2>Percentage of Sky with clouds : {clouds?.all}</h2>
-          </div>
-          {/* clouds */}
-          <div className="Aqi">
-            <h2>Air Quality Index : {aqiv?.list[0].main.aqi}</h2>
-            <h2>
-              Ammonia : {aqiv?.list[0].components.nh3}
-              <span style={{ fontSize: "20px" }}> {"μg/m3"}</span>
-            </h2>
-            <h2>
-              Ozone : {aqiv?.list[0].components.o3}
-              <span style={{ fontSize: "20px" }}> {"μg/m3"}</span>
-            </h2>
-            <h2>
-              Carbon-Mono-Oxide : {aqiv?.list[0].components.co}
-              <span style={{ fontSize: "20px" }}> {"μg/m3"}</span>
-            </h2>
-            <h2>
-              Air Quality : {getAirQualityDescription(aqiv?.list[0].main.aqi)}
-            </h2>
+                <h2>
+                  Pressure : {main?.pressure}
+                  <span style={{ fontSize: "20px" }}> {"hPa"}</span>
+                </h2>
+                <h2>Percentage of Sky with clouds : {clouds?.all}</h2>
+              </main>
+            </div>
+            {/* clouds */}
+            <div className="Aqi one">
+              <main>
+                <h2>Air Quality Index : {aqiv?.list[0].main.aqi}</h2>
+                <h2>
+                  Ammonia : {aqiv?.list[0].components.nh3}
+                  <span style={{ fontSize: "20px" }}> {"μg/m3"}</span>
+                </h2>
+                <h2>
+                  Ozone : {aqiv?.list[0].components.o3}
+                  <span style={{ fontSize: "20px" }}> {"μg/m3"}</span>
+                </h2>
+                <h2>
+                  Carbon-Mono-Oxide : {aqiv?.list[0].components.co}
+                  <span style={{ fontSize: "20px" }}> {"μg/m3"}</span>
+                </h2>
+                <h2>
+                  Air Quality :{" "}
+                  {getAirQualityDescription(aqiv?.list[0].main.aqi)}
+                </h2>
+              </main>
+            </div>
           </div>
         </div>
-      </div>
-
+      </section>
       {/* image */}
       <div>
         <img
           src={image}
           alt="Error 404"
           style={{
-            height: "auto",
-            maxWidth: "90%",
+            aspectRatio: "16/9",
+            backgroundSize: "cover",
+            maxWidth: "80%",
             borderRadius: "15px",
             boxShadow: "7px 7px black",
           }}
@@ -255,7 +249,7 @@ const CityInput = () => {
         {/* footer */}
         <div className="footer">
           <footer style={{ margin: "80px 0" }}>
-            Copyright @ ABHINAV P SINGH  2022
+            Copyright @ ABHINAV P SINGH 2022
           </footer>
         </div>
       </div>

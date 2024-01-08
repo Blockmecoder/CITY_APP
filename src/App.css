@@ -1,56 +1,215 @@
+ @keyframes slideRight{
+  to{
+    opacity: 1;
+    transform: translateX(0%);
+  }
+ }
+ 
+ 
  .App { 
-  font-family: "Pacifico", cursive;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 200;
   text-align: center;  
-  background-image: url("./input/Red-sunrise.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #3434d3;
+  scroll-behavior: smooth;
 }
 h2{
 color: black;
 }
 .inputdiv {
+  height: 80vh;
   font-family: "Pacifico", cursive;
-  background-color: rgb(255, 178, 12)
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start; /* Fix typo and use a valid value */
+  padding: 5%;
+  justify-content: space-around;
+  margin: 0 75px;
+  }
+.logo{
+  height: 200px;
+  width: 200px; 
+  margin-bottom: 20px;
+  transform: translateX(-100%);
+  opacity: 0;
+  animation: slideRight 1s ease-in-out forwards;
 }
-.mini{
-  background-color: rgb(255, 160, 12);
-  padding: 10px; border-radius: 20px;
-  margin: 30px 10px;
+.search_butt { 
+  border-radius: 10px;
+  border: 2px solid dodgerblue;
+  text-align: center;
+  font-size: 1rem;
+  background-color: black;
+  color: white;
+  width: 17vh;
+  height: 6vh;
+  margin: 70px -10px 0px;
+  transform: translateX(-100%);
+  opacity: 0;
+  animation: slideRight 2s ease-in-out forwards;
 }
-.mini h1{
-font-size: 45px;
+
+
+ button:active {
+      background-color: lightcoral;
+      color: white;
+      transition: all .01s ease-in-out;
+    }
+  input:focus {
+      border: 2px solid dodgerblue;
+      outline: none;  
+    }
+      
+ .input_place {
+  width: 40vh;
+  height: 6vh;
+  font-size: 1.5rem; 
+  text-align: center;
+  background-color: black;
+  color: white;
+  border: solid 2px;
+  border-radius: 10px;
+  margin: 70px 10px 0;
+  transform: translateX(-100%);
+  opacity: 0;
+  animation: slideRight 1.5s ease-in-out forwards;
+}
+ 
+.input_place:hover{
+  background-color:rgb(14, 37, 113); 
+color: black;
+font-size: 1.25rem;
+border-radius: 20px; 
+border:solid 2.5px black;
+ cursor:text; 
+}
+.mini{  
+  padding: 10px;  
+  margin: 30px 10px; 
+}
+ 
+.part2{
+  height: 130vh;
+  margin-bottom: 15vh;
+background-color: antiquewhite;
+opacity: 0;
+transform: translateX(-100%);
+animation: slideRight 1s ease-in-out forwards;       
+}
+
+
+.cityname{ 
+  font-size: 45px;
+  font-weight:bolder;
 }
  .WeatherDetails{
    display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
   gap: 10px;
-  background-color: aquamarine;
   margin:20px;
   border-radius: 20px;
  }
- .Weather{
-  background-color: white; 
-  
+ .WeatherDetails:hover{ 
+  background-color: blueviolet;
+ }
+  .one{  
   padding: 4%; border-radius: 20px;
- }
- .Temparature{
-  background-color: white;  
-  padding: 40px; border-radius: 20px;
- }
+  overflow: hidden;
+  }
 
- .WindNPressure{
-   background-color: white; 
-  padding: 40px; border-radius: 20px;
- }
- .Aqi{
-   background-color: white;  
-  padding: 40px; border-radius: 20px;
- }
-.footer{
-  height:40px;
-  background-color: azure;
-  
-}
 
  
+.footer {
+  height: 40px;
+  font-size: 29px;
+  background: linear-gradient(90deg, #7be4ec 0%, #085ed7 100%);
+  -webkit-background-clip: text; /* For Safari/Chrome */
+  background-clip: text;
+  color: transparent; /* Ensure inline-block for background-clip to work on inline elements */
+}
+
+   .one{ 
+  position: relative;
+  background-color: rgb(120, 33, 3); 
+    transform: translateX(0rem);
+     opacity: 1;   
+}
+  .mini:hover .WeatherDetails::before{
+    opacity: 1;
+  }
+  main{
+    position: relative;
+    z-index: 2;
+  }
+.WindNPressure::after { 
+  content: "";  
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%; 
+  background-color: rgba(170, 105, 8, 0.832);
+  clip-path: circle(50% at 150% -50%);
+  transition: clip-path 0.5s ease-in-out;  
+}
+.Aqi::after { 
+  content: "";  
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%; 
+  background-color: rgba(170, 105, 8, 0.832);
+  clip-path: circle(50% at -50% -50%);
+  transition: clip-path 0.5s ease-in-out;  
+}
+.Temparature::after { 
+  content: "";  
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%; 
+  background-color: rgba(170, 105, 8, 0.832);
+  clip-path: circle(50% at -50% 150%);
+  transition: clip-path 0.5s ease-in-out;  
+}
+.Weather::after { 
+  content: "";  
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%; 
+  background-color: rgba(170, 105, 8, 0.832);
+  clip-path: circle(50% at 150% 150%);
+  transition: clip-path 0.5s ease-in-out;  
+}
+
+.WindNPressure:hover::after,.Aqi:hover::after,.Weather:hover::after,.Temparature:hover::after{
+  clip-path: circle(100% at 50% 50%);
+} 
+
+
+.WeatherDetails::before{
+  position: absolute;
+  content: '';  
+  justify-self: center;
+  align-self: center;
+width: 100px;
+height: 100px;
+border-radius: 50%;
+opacity: 0; 
+background-color: blueviolet;
+z-index: 1;
+transition: opacity .3s ease-in-out;
+}  
+ 
+
+.search_butt,.input_place,.WeatherDetails,.one,.inputdiv
+{
+  transition-property:all;
+  transition-duration: .4s;
+  transition-timing-function: ease-in-out;
+ }
