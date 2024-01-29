@@ -238,13 +238,7 @@ const CityInput = () => {
         <img
           src={image}
           alt="Error 404"
-          style={{
-            aspectRatio: "16/9",
-            backgroundSize: "cover",
-            maxWidth: "80%",
-            borderRadius: "15px",
-            boxShadow: "7px 7px black",
-          }}
+         className="cityImg"
         />
         {/* footer */}
         <div className="footer">

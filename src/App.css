@@ -17,14 +17,11 @@ h2{
 color: black;
 }
 .inputdiv {
-  height: 80vh;
   font-family: "Pacifico", cursive;
   display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start; /* Fix typo and use a valid value */
+  flex-direction: column;
+  align-items: center;
   padding: 5%;
-  justify-content: space-around;
-  margin: 0 75px;
   }
 .logo{
   height: 200px;
@@ -36,19 +33,24 @@ color: black;
 }
 .search_butt { 
   border-radius: 10px;
-  border: 2px solid dodgerblue;
+  border: 1.25px solid dodgerblue;
   text-align: center;
   font-size: 1rem;
   background-color: black;
   color: white;
-  width: 17vh;
+  width: 25%;
   height: 6vh;
-  margin: 70px -10px 0px;
+  margin-top: 10vw;
   transform: translateX(-100%);
   opacity: 0;
   animation: slideRight 2s ease-in-out forwards;
 }
-
+.cityImg{
+            aspect-ratio: 16/9;
+            background-size: cover;
+            max-width: 80%;
+            border-radius: 15px;
+box-shadow: 7px 2.5px 1px 1.5px rgba(0, 0, 0,0.6);        }
 
  button:active {
       background-color: lightcoral;
@@ -61,15 +63,15 @@ color: black;
     }
       
  .input_place {
-  width: 40vh;
+  width: 24%;
   height: 6vh;
   font-size: 1.5rem; 
   text-align: center;
   background-color: black;
   color: white;
-  border: solid 2px;
+  border: solid 1.5px;
   border-radius: 10px;
-  margin: 70px 10px 0;
+  margin-top: 10vw;
   transform: translateX(-100%);
   opacity: 0;
   animation: slideRight 1.5s ease-in-out forwards;
@@ -212,4 +214,45 @@ transition: opacity .3s ease-in-out;
   transition-property:all;
   transition-duration: .4s;
   transition-timing-function: ease-in-out;
+ }
+
+
+
+ @media (width<=464px){
+.inputdiv{
+  height: auto;
+  padding: 0px;
+  margin: 0px;
+    flex-direction: column;
+ align-items: center;
+ padding: 10%;
+  }
+.logo{
+  margin: 0px;
+}
+.input_place{
+  width: 60%;
+  height: 8vw;
+  margin:auto;
+}
+.search_butt{  
+  width: 62%;
+  height: 10vw;
+  margin:auto;
+    margin-top: 5%;
+}
+.cityname{
+  font-size: 10vw;
+}
+.WeatherDetails{
+  display: flex;
+  flex-direction: column;  
+}
+
+.WeatherDetails::before{
+  display: none;
+}
+.part2{
+height: auto;
+ }
  }
