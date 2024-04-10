@@ -107,7 +107,7 @@ const CityInput = () => {
   //  RETURN FUNCTION
 
   return (
-    <div className="top-0 left-0 bg-slate-100">
+    <div className="top-0 left-0 bg-white">
       <div className="Nav flex justify-between items-center bg-gradient-to-t from-purple-500 to-pink-500">
         <h1 className="font-semibold text-[2.6vw] ">CityData</h1>
         <div className="flex w-[40%] gap-8">
@@ -123,7 +123,7 @@ const CityInput = () => {
             placeholder="Enter City"
           ></input>
           <button
-            className="text-center rounded-[2vw] w-[80%] border hover:border-[#41baf0] h-[3vw] bg-white border-[#000000] slideRight"
+            className="text-center rounded-[2vw] w-[80%] border hover:border-[#41baf0] h-[3vw] bg-[#31a0d4] border-[#000000] slideRight"
             onClick={handleSubmit}
             type="submit"
           >
@@ -131,12 +131,12 @@ const CityInput = () => {
           </button>
         </div>
       </div>
-      <section className="part2 slide-in-section">
-        <div className="mini">
-          <h1 className="cityname">{city}</h1>
-          <div className="WeatherDetails">
+      <section className="text-center slide-in-section px-8 py-16">
+        <div className="flex flex-col gap-10">
+          <h1 className="text-[2vw] tracking-in-expand">{city}</h1>
+          <div className="flex justify-around">
             {/* Weather */}
-            <div className="Weather one">
+            <div className="card">
               <main>
                 <h2>Weather feels like : {weather && weather[0]?.main}</h2>
                 <img
@@ -155,7 +155,7 @@ const CityInput = () => {
               </main>
             </div>
             {/* temparature */}
-            <div className="Temparature one">
+            <div className="card">
               <main>
                 <h2>
                   Temparature : {main?.temp}
@@ -188,7 +188,7 @@ const CityInput = () => {
               </main>
             </div>
             {/* wind n pressure */}
-            <div className="WindNPressure one">
+            <div className="card">
               <main>
                 <h2>
                   Wind Speed : {wind?.speed}
@@ -210,7 +210,7 @@ const CityInput = () => {
               </main>
             </div>
             {/* clouds */}
-            <div className="Aqi one">
+            <div className="card">
               <main>
                 <h2>Air Quality Index : {aqiv?.list[0].main.aqi}</h2>
                 <h2>
@@ -235,13 +235,28 @@ const CityInput = () => {
         </div>
       </section>
       {/* image */}
-      <div>
-        <img src={image} alt="Error 404" className="cityImg" />
+      <div className="flex flex-col">
+        <img
+          className="w-[60%] rounded-[0.5vw] h-auto shadow-drop-center self-center "
+          src={image}
+          alt="Error 404"
+        />
         {/* footer */}
-        <div className="footer">
-          <footer style={{ margin: "80px 0" }}>
+        <div className="footer relative">
+          <footer className="z-10 my-20 text-center text-[2vw] top-10 absolute w-full tracking-in-expand">
             Copyright @ ABHINAV P SINGH 2022
           </footer>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1440 320"
+            className="absolute top-0 left-0 w-full"
+          >
+            <path
+              fill="#5000ca"
+              fill-opacity="1"
+              d="M0,128L240,288L480,224L720,192L960,288L1200,160L1440,64L1440,320L1200,320L960,320L720,320L480,320L240,320L0,320Z"
+            ></path>
+          </svg>
         </div>
       </div>
     </div>

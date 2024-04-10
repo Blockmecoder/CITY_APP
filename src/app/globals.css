@@ -11,5 +11,25 @@
  .Nav{ 
   padding: 4% 7%; 
  }
+ .card{
+  border-radius: 1.6vw;
+  height: 30vw;
+  width: 22%;
+  font-size: 1.25vw;
+  padding: 4% 7%;
+  background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+ }
+ .card:hover{
+  cursor: pointer;
+  background-image: linear-gradient(120deg, #fda085 0%, #f6d365 100%);
+  scale: 1.02;
+  box-shadow:0 0 20px 0 rgba(0,0,0,.35);
+  transition: all 0.4s ease-in-out;
+ }
  
- 
+@-webkit-keyframes shadow-drop-center{0%{-webkit-box-shadow:0 0 0 0 transparent;box-shadow:0 0 0 0 transparent}100%{-webkit-box-shadow:0 0 20px 0 rgba(0,0,0,.35);box-shadow:0 0 20px 0 rgba(0,0,0,.35)}}@keyframes shadow-drop-center{0%{-webkit-box-shadow:0 0 0 0 transparent;box-shadow:0 0 0 0 transparent}100%{-webkit-box-shadow:0 0 20px 0 rgba(0,0,0,.35);box-shadow:0 0 20px 0 rgba(0,0,0,.35)}}
+.shadow-drop-center{-webkit-animation:shadow-drop-center .6s cubic-bezier(.25,.46,.45,.94) both;animation:shadow-drop-center .6s cubic-bezier(.25,.46,.45,.94) both}
+
+
+@-webkit-keyframes tracking-in-expand{0%{letter-spacing:-.5em;opacity:0}40%{opacity:.6}100%{opacity:1}}@keyframes tracking-in-expand{0%{letter-spacing:-.5em;opacity:0}40%{opacity:.6}100%{opacity:1}}
+ .tracking-in-expand{-webkit-animation:tracking-in-expand .7s cubic-bezier(.215,.61,.355,1.000) both;animation:tracking-in-expand .7s cubic-bezier(.215,.61,.355,1.000) both}
