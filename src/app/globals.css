@@ -26,7 +26,9 @@
   box-shadow:0 0 20px 0 rgba(0,0,0,.35);
   transition: all 0.4s ease-in-out;
  }
- 
+ @media (max-width:464px){
+  
+ }
 @-webkit-keyframes shadow-drop-center{0%{-webkit-box-shadow:0 0 0 0 transparent;box-shadow:0 0 0 0 transparent}100%{-webkit-box-shadow:0 0 20px 0 rgba(0,0,0,.35);box-shadow:0 0 20px 0 rgba(0,0,0,.35)}}@keyframes shadow-drop-center{0%{-webkit-box-shadow:0 0 0 0 transparent;box-shadow:0 0 0 0 transparent}100%{-webkit-box-shadow:0 0 20px 0 rgba(0,0,0,.35);box-shadow:0 0 20px 0 rgba(0,0,0,.35)}}
 .shadow-drop-center{-webkit-animation:shadow-drop-center .6s cubic-bezier(.25,.46,.45,.94) both;animation:shadow-drop-center .6s cubic-bezier(.25,.46,.45,.94) both}
 
