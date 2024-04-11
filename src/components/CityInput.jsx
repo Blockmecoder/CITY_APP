@@ -106,22 +106,24 @@ const CityInput = () => {
 
   return (
     <div className="top-0 left-0 bg-white">
-      <div className="Nav flex justify-between items-center bg-gradient-to-t from-purple-500 to-pink-500">
-        <h1 className="font-semibold text-[2.6vw] ">CityData</h1>
-        <div className="flex w-[40%] gap-8">
+      <div className="Nav flex max-[464px]:flex-col gap-[5vw] justify-between items-center bg-gradient-to-t from-purple-500 to-pink-500">
+        <h1 className="font-semibold text-[2.6vw] max-[464px]:text-[10vw]">
+          CityData
+        </h1>
+        <div className="flex w-[40%] gap-8 max-[464px]:w-[100%] max-[464px]:flex-col">
           <input
             onKeyDown={(e) => {
               if (e.key === "Enter") {
                 handleSubmit();
               }
             }}
-            className="slideRight bg-white border active:border-none hover:border-[#41baf0] border-[#000000] text-center rounded-[2vw] w-[120%] h-[3vw]"
+            className="slideRight bg-white border active:border-none hover:border-[#41baf0] border-[#000000] text-center rounded-[2vw] w-[100%] h-[3vw] max-[464px]:h-[9vw] max-[464px]:rounded-[3.35vw]"
             value={inputValue}
             onChange={handleInputChange}
             placeholder="Enter City"
           ></input>
           <button
-            className="text-center rounded-[2vw] w-[80%] border hover:border-[#41baf0] h-[3vw] bg-[#31a0d4] border-[#000000] slideRight"
+            className="text-center rounded-[2vw] w-[100%] border hover:border-[#41baf0] h-[3vw] bg-[#31a0d4] border-[#000000] slideRight  max-[464px]:h-[9vw] max-[464px]:rounded-[3.35vw] max-[464px]:self-center"
             onClick={handleSubmit}
             type="submit"
           >
@@ -131,8 +133,10 @@ const CityInput = () => {
       </div>
       <section className="text-center slide-in-section px-8 py-16">
         <div className="flex flex-col gap-10">
-          <h1 className="text-[2vw] tracking-in-expand">{city}</h1>
-          <div className="flex justify-around">
+          <h1 className="text-[2vw] tracking-in-expand max-[464px]:text-[10vw]">
+            {city}
+          </h1>
+          <div className="flex justify-around max-[464px]:flex-col max-[464px]:items-center gap-[10vw]">
             {/* Weather */}
             <div className="card">
               <main>
@@ -171,17 +175,14 @@ const CityInput = () => {
                 </h2>
                 <h2>
                   Maximum Temparature : {main?.temp_max}
-                  <span onClick={handleUnit}  >
+                  <span onClick={handleUnit}>
                     {" "}
                     {unit === "metric" ? "°C" : "°F"}
                   </span>
                 </h2>
                 <h2>
                   Height From Sea Level : {main?.sea_level}
-                  <span onClick={handleUnit}  >
-                    {" "}
-                    {"Meters"}
-                  </span>
+                  <span onClick={handleUnit}> {"Meters"}</span>
                 </h2>
               </main>
             </div>
@@ -190,19 +191,19 @@ const CityInput = () => {
               <main>
                 <h2>
                   Wind Speed : {wind?.speed}
-                  <span onClick={handleUnit}  >
+                  <span onClick={handleUnit}>
                     {" "}
                     {unit === "metric" ? "m/s" : "mph"}
                   </span>
                 </h2>
                 <h2>
                   Humidity Percentage : {main?.humidity}
-                  <span  >%</span>
+                  <span>%</span>
                 </h2>
 
                 <h2>
                   Pressure : {main?.pressure}
-                  <span  > {"hPa"}</span>
+                  <span> {"hPa"}</span>
                 </h2>
                 <h2>Percentage of Sky with clouds : {clouds?.all}</h2>
               </main>
@@ -213,15 +214,15 @@ const CityInput = () => {
                 <h2>Air Quality Index : {aqiv?.list[0].main.aqi}</h2>
                 <h2>
                   Ammonia : {aqiv?.list[0].components.nh3}
-                  <span  > {"μg/m3"}</span>
+                  <span> {"μg/m3"}</span>
                 </h2>
                 <h2>
                   Ozone : {aqiv?.list[0].components.o3}
-                  <span  > {"μg/m3"}</span>
+                  <span> {"μg/m3"}</span>
                 </h2>
                 <h2>
                   Carbon-Mono-Oxide : {aqiv?.list[0].components.co}
-                  <span  > {"μg/m3"}</span>
+                  <span> {"μg/m3"}</span>
                 </h2>
                 <h2>
                   Air Quality :{" "}
@@ -233,15 +234,15 @@ const CityInput = () => {
         </div>
       </section>
       {/* image */}
-      <div className="flex flex-col">
+      <div className="flex flex-col gap-[5vw]">
         <img
-          className="w-[60%] rounded-[0.5vw] h-auto shadow-drop-center self-center "
+          className="w-[80%] rounded-[0.5vw] h-auto shadow-drop-center self-center "
           src={image}
           alt="Error 404"
         />
         {/* footer */}
         <div className="footer relative">
-          <footer className="z-10 my-20 text-center text-[2vw] top-10 absolute w-full tracking-in-expand">
+          <footer className="z-10 my-20 text-center text-[2vw] top-10 max-[464px]:-top-14 max-[464px]:text-[3.5vw] absolute w-full tracking-in-expand">
             Copyright @ ABHINAV P SINGH 2022
           </footer>
           <svg
