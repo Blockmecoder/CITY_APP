@@ -1,8 +1,6 @@
 "use client"
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
-import dotenv from "dotenv";
-dotenv.config();
 
 const getAirQualityDescription = (p) => {
   if (p === 1) {
@@ -36,9 +34,8 @@ const CityInput = () => {
     // changing the maindata of openweather api
 
     const maindata = async () => {
-     try {
-        // const apik = '0cb44d1a901f1ebc3457f4859b4592ef';
-        const apik = process.env.REACT_APP_API_KEY;
+     try { 
+        const apik = process.env.NEXT_PUBLIC_VERCEL_ENV_WEATHER;
         const API_CALL = `https://api.openweathermap.org/data/2.5/weather`;
         const res2 = await Axios.get(
           `${API_CALL}?appid=${apik}&q=${city}&units=${unit}`
@@ -71,9 +68,8 @@ const CityInput = () => {
 
     // changing the maindata of the Unsplash api
     const Unsplash = async () => {
-      try {
-        // const Cid = 'zTApDUPYSfv9JF3genMGmSGpg-KOpYQSy4BQXw-2WLY';
-        const Cid = process.env.REACT_APP_UNSPLASH_A_KEY;
+      try { 
+        const Cid = process.env.NEXT_PUBLIC_VERCEL_ENV_UNSPLASH;
         const U_CALL = "https://api.unsplash.com/search/photos?";
         await Axios.get(`${U_CALL}&query=${city}&client_id=${Cid}`).then(
           (r) => {
