@@ -1,6 +1,8 @@
 "use client"
 import React, { useEffect, useState } from "react";
-import Axios from "axios"; 
+import Axios from "axios";
+import dotenv from "dotenv";
+dotenv.config();
 
 const getAirQualityDescription = (p) => {
   if (p === 1) {
@@ -34,9 +36,8 @@ const CityInput = () => {
     // changing the maindata of openweather api
 
     const maindata = async () => {
-      console.log("first");
-
-      try {
+     try {
+        // const apik = '0cb44d1a901f1ebc3457f4859b4592ef';
         const apik = process.env.REACT_APP_API_KEY;
         const API_CALL = `https://api.openweathermap.org/data/2.5/weather`;
         const res2 = await Axios.get(
@@ -71,6 +72,7 @@ const CityInput = () => {
     // changing the maindata of the Unsplash api
     const Unsplash = async () => {
       try {
+        // const Cid = 'zTApDUPYSfv9JF3genMGmSGpg-KOpYQSy4BQXw-2WLY';
         const Cid = process.env.REACT_APP_UNSPLASH_A_KEY;
         const U_CALL = "https://api.unsplash.com/search/photos?";
         await Axios.get(`${U_CALL}&query=${city}&client_id=${Cid}`).then(
@@ -79,7 +81,7 @@ const CityInput = () => {
           }
         );
       } catch (error) {
-        console.log("server error", error.response);
+        console.log("unsplash server error", error.response);
         setImage(
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhlZ8DBN69jQASKnxARneFIQwdmxFjSKnpDw&usqp=CAU"
         );
@@ -159,28 +161,28 @@ const CityInput = () => {
               <main>
                 <h2>
                   Temparature : {main?.temp}
-                  <span onClick={handleUnit} style={{ fontSize: "20px" }}>
+                  <span onClick={handleUnit}>
                     {" "}
                     {unit === "metric" ? "°C" : "°F"}
                   </span>
                 </h2>
                 <h2>
                   Minimum Temparature : {main?.temp_min}
-                  <span onClick={handleUnit} style={{ fontSize: "20px" }}>
+                  <span onClick={handleUnit}>
                     {" "}
                     {unit === "metric" ? "°C" : "°F"}
                   </span>
                 </h2>
                 <h2>
                   Maximum Temparature : {main?.temp_max}
-                  <span onClick={handleUnit} style={{ fontSize: "20px" }}>
+                  <span onClick={handleUnit}  >
                     {" "}
                     {unit === "metric" ? "°C" : "°F"}
                   </span>
                 </h2>
                 <h2>
                   Height From Sea Level : {main?.sea_level}
-                  <span onClick={handleUnit} style={{ fontSize: "20px" }}>
+                  <span onClick={handleUnit}  >
                     {" "}
                     {"Meters"}
                   </span>
@@ -192,19 +194,19 @@ const CityInput = () => {
               <main>
                 <h2>
                   Wind Speed : {wind?.speed}
-                  <span onClick={handleUnit} style={{ fontSize: "20px" }}>
+                  <span onClick={handleUnit}  >
                     {" "}
                     {unit === "metric" ? "m/s" : "mph"}
                   </span>
                 </h2>
                 <h2>
                   Humidity Percentage : {main?.humidity}
-                  <span style={{ fontSize: "20px" }}>%</span>
+                  <span  >%</span>
                 </h2>
 
                 <h2>
                   Pressure : {main?.pressure}
-                  <span style={{ fontSize: "20px" }}> {"hPa"}</span>
+                  <span  > {"hPa"}</span>
                 </h2>
                 <h2>Percentage of Sky with clouds : {clouds?.all}</h2>
               </main>
@@ -215,15 +217,15 @@ const CityInput = () => {
                 <h2>Air Quality Index : {aqiv?.list[0].main.aqi}</h2>
                 <h2>
                   Ammonia : {aqiv?.list[0].components.nh3}
-                  <span style={{ fontSize: "20px" }}> {"μg/m3"}</span>
+                  <span  > {"μg/m3"}</span>
                 </h2>
                 <h2>
                   Ozone : {aqiv?.list[0].components.o3}
-                  <span style={{ fontSize: "20px" }}> {"μg/m3"}</span>
+                  <span  > {"μg/m3"}</span>
                 </h2>
                 <h2>
                   Carbon-Mono-Oxide : {aqiv?.list[0].components.co}
-                  <span style={{ fontSize: "20px" }}> {"μg/m3"}</span>
+                  <span  > {"μg/m3"}</span>
                 </h2>
                 <h2>
                   Air Quality :{" "}
