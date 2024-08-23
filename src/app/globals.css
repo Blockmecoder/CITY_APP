@@ -14,9 +14,9 @@
  .card{
   border-radius: 1.6vw;
   height: 30vw;
-  width: 22%;
+  width: 18vw;
   font-size: 1.25vw;
-  padding: 4% 7%;
+  padding: 4% 4.6%;
   background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
  }
  .card:hover{
