@@ -136,7 +136,7 @@ const CityInput = () => {
           <h1 className="text-[2vw] tracking-in-expand max-[464px]:text-[10vw]">
             {city}
           </h1>
-          <div className="flex justify-around max-[464px]:flex-col max-[464px]:items-center gap-[10vw]">
+          <div className="flex justify-around max-[464px]:flex-col max-[464px]:items-center gap-[5vw]">
             {/* Weather */}
             <div className="card">
               <main>
